@@ -1,0 +1,88 @@
+html {
+    background-color: rgb(244, 143, 177);
+    display: flex;
+    justify-content: center;
+}
+
+body {
+    margin: 8px;
+}
+
+img {
+    width: 150px;
+    height: 150px;
+}
+.container {
+    width: 800px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    padding: 15px 0px;
+}
+
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.startgame-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.game-container {
+    display: none;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+#result {
+    text-align: center;
+    font-size: 52px;
+}
+
+.btn.btn-start {
+    font-size: 40px;
+    padding: 30px;
+    margin: 20px 200px;
+}
+
+.btn {
+    color: white;
+    margin: 20px;
+    background: rgba(255, 255, 255, 0.07);
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    border-image: initial;
+    border-radius: 20px;
+}
+
+.score-card {
+    background-color: white;
+    margin: 20px 300px;
+    border-radius: 20px;
+}
+

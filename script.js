@@ -1,3 +1,7 @@
+function capitalizeFirstLetter(string) {
+    return string[0].toUpperCase() + string.slice(1);
+}
+
 function getComputerChoise () {
     let num =  Math.floor(Math.random() * 3);
     return num == 2 ? 'paper'
@@ -8,56 +12,63 @@ function getComputerChoise () {
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
 
-    if (playerSelection == 'paper') {
-        if (computerSelection == 'paper') {
-            return ("Draw, Both choosed Paper");
-        } else if (computerSelection == 'rock'){
-            scorePlayer++;
-            return ("You won! Paper beats Rock");
+    //draw
+    if (playerSelection === computerSelection) {
+        writeResult(`Draw, Both choosed ${capitalizeFirstLetter(playerSelection)}`);
+    } else { 
+        //win lose
+        if (    
+            (playerSelection === 'paper' && computerSelection === 'rock') || 
+            (playerSelection === 'rock' && computerSelection === 'scissors') ||
+            (playerSelection === 'scissors' && computerSelection === 'paper') 
+        ) {
+            writeResult(`You won! ${capitalizeFirstLetter(playerSelection)} beats ${capitalizeFirstLetter(computerSelection)}`);
+            addScore('player');
+            writeScore('player');
         } else {
-            scoreComputer++;
-            return ("You lose! Scissors beats Paper");
+            writeResult(`You lose! ${capitalizeFirstLetter(computerSelection)} beats ${capitalizeFirstLetter(playerSelection)}`);
+            addScore('computer');
+            writeScore('computer');
         }
     }
-
-    if (playerSelection == 'rock') {
-        if (computerSelection == 'paper') {
-            scoreComputer++;
-            return ("You lose! Paper beats Rock");
-        } else if (computerSelection == 'rock'){
-            return ("Draw, Both choosed Rock");
-        } else {
-            scorePlayer++;
-            return ("You won! Rock beats Scissors");
-        }
-    }
-
-    if (playerSelection == 'scissors') {
-        if (computerSelection == 'paper') {
-            scorePlayer++;
-            return ("You won! Scissors beats Paper");
-        } else if (computerSelection == 'rock'){
-            scoreComputer++;
-            return ("You lose! Rock beats Scissors");
-        } else {
-            return ("Draw, Both choosed Scissors");
-        }
-    }
-}
-
-
-function game() {
-    alert("Lets play Rock Paper Scissors, a five round game!")
-    for (let i = 0; i < 5; i++) {
-        alert("Round " + (i + 1) + "!\nPlayer Score:" + scorePlayer + "\nComputer Score: " + scoreComputer);
-        let playerSelection = prompt("Choose Paper, Rock or Scissors");
-        let computerSelection = getComputerChoise();
-        alert(playRound(playerSelection, computerSelection));
-    }
-    alert("Game Over\nFinal Score:\nPlayer:" + scorePlayer + "  Computer: " + scoreComputer );
 }
 
 let scorePlayer = 0;
 let scoreComputer = 0;
 
-game(); 
+function addScore(arg) {
+    if (arg === 'player') scorePlayer += 1;
+    if (arg === 'computer') scoreComputer += 1;
+}
+
+function getScore(arg) {
+    if (arg === 'player') return scorePlayer;
+    if (arg === 'computer') return scoreComputer;
+}
+
+/// DOM MANIP
+
+function writeResult(string) {
+    const result = document.getElementById('result');
+    result.textContent = string;
+}
+
+function writeScore(arg) {
+    const spanPlayerScore = document.getElementById('player-score');
+    const spanComputerScore = document.getElementById('computer-score');
+
+    if (arg == "player") spanPlayerScore.textContent = getScore('player');
+    if (arg == "computer") spanComputerScore.textContent = getScore('computer');
+}
+
+function game() {
+    //hide menu and show game.
+    startContainer = document.querySelector('.startgame-container').style.display = 'none';
+    gameContainer = document.querySelector('.game-container').style.display = 'block';
+
+    const rock = document.getElementById('btn-rock').addEventListener('click',e => playRound('rock', getComputerChoise()));
+    const paper = document.getElementById('btn-paper').addEventListener('click',e => playRound('paper', getComputerChoise()));
+    const scissors = document.getElementById('btn-scissors').addEventListener('click',e => playRound('scissors', getComputerChoise()));
+}
+
+const startButton = document.querySelector('.btn-start').addEventListener('click', e => game());
