@@ -9,13 +9,15 @@
 </head>
 <body>
     <div class ="container">
-        
         <div class="title-container">
             <h1>Rock Paper Scissors</h1>
         </div>
-        <div class="startgame-container">
+        <div class="menu-container start">
             <h2>First to get 5 points wins the game!</h2>
             <button class="btn btn-start">Start Game</button>
+        </div>
+        <div class="menu-container end">
+            <h1>Game Over!</h1>
         </div>
         <div class="game-container">
             <div class="buttons">
@@ -23,17 +25,14 @@
                 <button class="btn" id="btn-paper"><img src="images/paper.svg" alt="paper"></button>
                 <button class="btn" id="btn-scissors"><img src="images/scissors.svg" alt="scissors"></button>
             </div>
-            <div id="result"></div>
+        </div>
+        <div id="result"></div>
+        <div class="score-container">
             <h1>Score:</h1>
-            <div class="score-container">
-                <div class="score-card"><h2>Player: <span id="player-score">0</span></h2></div>
-                <div class="score-card"><h2>Computer: <span id="computer-score">0</span></h2></div>
-        
-            </div>
+            <div class="score-card"><h2>Player: <span id="player-score">0</span></h2></div>
+            <div class="score-card"><h2>Computer: <span id="computer-score">0</span></h2></div>
         </div>
     </div>
-
-
 
     <script src="script.js"></script>
 </body>

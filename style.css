@@ -1,9 +1,11 @@
 html {
-    background-color: rgb(244, 143, 177);
+    font-family: 'Source Code Pro', monospace;
     display: flex;
     justify-content: center;
+    background: #AAC4FF;
+    color: black;
 }
-
+#D2DAFF
 body {
     margin: 8px;
 }
@@ -14,42 +16,54 @@ img {
 }
 .container {
     width: 800px;
-    background-color: rgba(0, 0, 0, 0.2);
+    height: 800px;
+    background-color: #EEF1FF;
     border-radius: 15px;
     padding: 15px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 50px black solid;
 }
 
 h1 {
     display: block;
-    font-size: 2em;
-    margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+    font-size: 80px;
+    margin: 20px;
     font-weight: bold;
+    font-weight: 600;
+    color: #B1B2FF;
 }
 
 h2 {
     display: block;
     font-size: 1.5em;
-    margin-block-start: 0.83em;
-    margin-block-end: 0.83em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+    margin: 20px;
+    margin: 20px;
     font-weight: bold;
+    color: #B1B2FF;
 }
 
 h1, h2 {
     text-align: center;
+
 }
 
-.startgame-container {
+.menu-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 .game-container {
+    display: none;
+}
+
+.score-container {
+    display: none;
+}
+
+.end {
     display: none;
 }
 
@@ -70,18 +84,25 @@ h1, h2 {
 }
 
 .btn {
-    color: white;
+    color: #B1B2FF;
     margin: 20px;
-    background: rgba(255, 255, 255, 0.07);
-    border-width: 2px;
+    background: #EEF1FF;
+    border-width:10px;
     border-style: solid;
-    border-color: black;
+    border-color: #B1B2FF;
     border-image: initial;
     border-radius: 20px;
+    font-weight: bold;
+    transition: all .07s ease;
 }
 
+.mouseover {
+    transform: scale(1.1);
+}
+
+
 .score-card {
-    background-color: white;
+    background-color: #EEF1FF;
     margin: 20px 300px;
     border-radius: 20px;
 }

@@ -31,6 +31,14 @@ function playRound(playerSelection, computerSelection) {
             writeScore('computer');
         }
     }
+
+    if (isGameOver()) {
+        endGameScreen();
+    }
+}
+
+function isGameOver() {
+    return scorePlayer === 5 || scoreComputer === 5;
 }
 
 let scorePlayer = 0;
@@ -61,14 +69,47 @@ function writeScore(arg) {
     if (arg == "computer") spanComputerScore.textContent = getScore('computer');
 }
 
+
+
+
 function game() {
     //hide menu and show game.
-    startContainer = document.querySelector('.startgame-container').style.display = 'none';
+    startContainer = document.querySelector('.start').style.display = 'none';
     gameContainer = document.querySelector('.game-container').style.display = 'block';
+    scoreContainer = document.querySelector('.score-container').style.display = 'block';
 
     const rock = document.getElementById('btn-rock').addEventListener('click',e => playRound('rock', getComputerChoise()));
     const paper = document.getElementById('btn-paper').addEventListener('click',e => playRound('paper', getComputerChoise()));
     const scissors = document.getElementById('btn-scissors').addEventListener('click',e => playRound('scissors', getComputerChoise()));
 }
 
+function endGameScreen() {
+    gameContainer = document.querySelector('.game-container').style.display = 'none';
+    endContainer = document.querySelector('.end').style.display = 'block';
+    result = document.querySelector('#result').textContent = ""
+}
+
+//to implement -- 
+//button animation
+
+
+// const buttons = document.querySelectorAll('.btn')
+
+// buttons.forEach(btn => {
+//     btn.addEventListener('mouseover', btn.classList.add('mouseover'));
+
+//     // btn.addEventListener('mouseout', btn.classList.remove('mouseover'));
+//     console.log(btn)
+// })
+
+// buttons.forEach(btn => btn.addEventListener('transitioned', removeTransition));
+
+
+
+
+
+
+
+
 const startButton = document.querySelector('.btn-start').addEventListener('click', e => game());
+
